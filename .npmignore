@@ -1,0 +1,31 @@
+/.git/
+/.github/
+/node_modules/
+/.turbo/
+
+# Dev files
+*.spec.ts
+*.test.ts
+/test/
+/coverage/
+
+# Config files
+.eslintrc.json
+jest.config.js
+.prettierrc
+.prettierignore
+
+# Source maps and extra build artifacts
+*.map
+src/
+tsconfig.*.json
+
+# Development dependencies manifests
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Other
+.DS_Store
+.env
+.env.local

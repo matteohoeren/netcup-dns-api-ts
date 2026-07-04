@@ -1,0 +1,88 @@
+{
+  "name": "netcup-dns-ts",
+  "version": "1.0.0",
+  "description": "Complete TypeScript library for Netcup CCP API (DNS + Reseller APIs) with full type safety",
+  "author": "Matteo Hoeren",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matteohoeren/netcup-dns-api-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matteohoeren/netcup-dns-api-ts/issues"
+  },
+  "homepage": "https://github.com/matteohoeren/netcup-dns-api-ts#readme",
+  "keywords": [
+    "netcup",
+    "dns",
+    "api",
+    "ccp",
+    "domain",
+    "reseller",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/src/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist lib/types && npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "tsc -p tsconfig.esm.json && tsc-esm-fix --target=dist/esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json && node -e \"require('node:fs').writeFileSync('dist/cjs/package.json', '{\\\"type\\\":\\\"commonjs\\\"}\\n')\"",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "lint": "eslint src test --max-warnings 0",
+    "lint:fix": "eslint src test --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test": "jest --coverage",
+    "test:api:non-dangerous": "jest --runInBand --verbose test/non-dangerous-api.spec.ts",
+    "test:watch": "jest --watch",
+    "docs": "typedoc src/index.ts",
+    "docs:watch": "typedoc --watch src/index.ts",
+    "clean": "rm -rf dist lib node_modules .turbo",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run docs"
+  },
+  "dependencies": {
+    "axios": "^1.16.0",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.19.41",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@typescript-eslint/parser": "^8.59.3",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.15.2",
+    "globals": "^17.6.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.8.3",
+    "ts-jest": "^29.4.9",
+    "tsc-esm-fix": "^2.20.27",
+    "typedoc": "^0.28.19",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.59.3"
+  },
+  "engines": {
+    "node": ">= 16.0",
+    "pnpm": ">= 10.0"
+  }
+}
