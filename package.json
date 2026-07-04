@@ -4,6 +4,7 @@
   "description": "Complete TypeScript library for Netcup CCP API (DNS + Reseller APIs) with full type safety",
   "author": "Matteo Hoeren",
   "license": "MIT",
+  "packageManager": "pnpm@11.5.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matteohoeren/netcup-dns-api-ts.git"
