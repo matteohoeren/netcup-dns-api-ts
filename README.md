@@ -337,6 +337,10 @@ This library was inspired by `netcup-node` by proohit:
 
 - `https://github.com/proohit/netcup-node`
 
+## Disclaimer
+
+This project was built with substantial assistance from AI tools. While the code is reviewed and tested, please verify behavior in your own environment before using it in production.
+
 ## License
 
 MIT
